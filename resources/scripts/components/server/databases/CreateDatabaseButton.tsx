@@ -18,14 +18,14 @@ interface Values {
 
 const schema = object().shape({
     databaseName: string()
-        .required('A database name must be provided.')
-        .min(3, 'Database name must be at least 3 characters.')
-        .max(48, 'Database name must not exceed 48 characters.')
+        .required('データベース名を指定する必要があります。')
+        .min(3, 'データベース名は3文字以上でなければなりません。')
+        .max(48, 'データベース名は48文字以内でなければなりません。')
         .matches(
             /^[\w\-.]{3,48}$/,
-            'Database name should only contain alphanumeric characters, underscores, dashes, and/or periods.'
+            'データベース名には、英数字、アンダースコア、ダッシュ、ピリオドのみを含めることができます。'
         ),
-    connectionsFrom: string().matches(/^[\w\-/.%:]+$/, 'A valid host address must be provided.'),
+    connectionsFrom: string().matches(/^[\w\-/.%:]+$/, '有効なホストアドレスが必要です。'),
 });
 
 export default () => {
@@ -75,17 +75,17 @@ export default () => {
                                 type={'string'}
                                 id={'database_name'}
                                 name={'databaseName'}
-                                label={'Database Name'}
-                                description={'A descriptive name for your database instance.'}
+                                label={'データベース名'}
+                                description={'データベースインスタンスの説明的な名前。'}
                             />
                             <div css={tw`mt-6`}>
                                 <Field
                                     type={'string'}
                                     id={'connections_from'}
                                     name={'connectionsFrom'}
-                                    label={'Connections From'}
+                                    label={'接続元'}
                                     description={
-                                        'Where connections should be allowed from. Leave blank to allow connections from anywhere.'
+                                        'どこから接続を許可するか。どこからでも接続を許可する場合は空白のままにします。'
                                     }
                                 />
                             </div>
@@ -96,17 +96,17 @@ export default () => {
                                     css={tw`w-full sm:w-auto sm:mr-2`}
                                     onClick={() => setVisible(false)}
                                 >
-                                    Cancel
+                                    キャンセル
                                 </Button>
                                 <Button css={tw`w-full mt-4 sm:w-auto sm:mt-0`} type={'submit'}>
-                                    Create Database
+                                    データベースを作成
                                 </Button>
                             </div>
                         </Form>
                     </Modal>
                 )}
             </Formik>
-            <Button onClick={() => setVisible(true)}>New Database</Button>
+            <Button onClick={() => setVisible(true)}>新規データベース</Button>
         </>
     );
 };

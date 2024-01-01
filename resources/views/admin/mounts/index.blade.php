@@ -2,14 +2,14 @@
 @extends('layouts.admin')
 
 @section('title')
-    Mounts
+    マウント
 @endsection
 
 @section('content-header')
-    <h1>Mounts<small>Configure and manage additional mount points for servers.</small></h1>
+    <h1>マウント<small>サーバーの追加のマウントポイントを構成および管理します。</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li class="active">Mounts</li>
+        <li><a href="{{ route('admin.index') }}">管理者</a></li>
+        <li class="active">マウント</li>
     </ol>
 @endsection
 
@@ -18,37 +18,37 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Mount List</h3>
+                    <h3 class="box-title">マウントリスト</h3>
 
                     <div class="box-tools">
-                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newMountModal">Create New</button>
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newMountModal">新規作成</button>
                     </div>
                 </div>
 
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tbody>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Source</th>
-                                <th>Target</th>
-                                <th class="text-center">Eggs</th>
-                                <th class="text-center">Nodes</th>
-                                <th class="text-center">Servers</th>
-                            </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Source</th>
+                            <th>Target</th>
+                            <th class="text-center">Eggs</th>
+                            <th class="text-center">Nodes</th>
+                            <th class="text-center">Servers</th>
+                        </tr>
 
-                            @foreach ($mounts as $mount)
-                                <tr>
-                                    <td><code>{{ $mount->id }}</code></td>
-                                    <td><a href="{{ route('admin.mounts.view', $mount->id) }}">{{ $mount->name }}</a></td>
-                                    <td><code>{{ $mount->source }}</code></td>
-                                    <td><code>{{ $mount->target }}</code></td>
-                                    <td class="text-center">{{ $mount->eggs_count }}</td>
-                                    <td class="text-center">{{ $mount->nodes_count }}</td>
-                                    <td class="text-center">{{ $mount->servers_count }}</td>
-                                </tr>
-                            @endforeach
+                        @foreach ($mounts as $mount)
+                            <tr>
+                                <td><code>{{ $mount->id }}</code></td>
+                                <td><a href="{{ route('admin.mounts.view', $mount->id) }}">{{ $mount->name }}</a></td>
+                                <td><code>{{ $mount->source }}</code></td>
+                                <td><code>{{ $mount->target }}</code></td>
+                                <td class="text-center">{{ $mount->eggs_count }}</td>
+                                <td class="text-center">{{ $mount->nodes_count }}</td>
+                                <td class="text-center">{{ $mount->servers_count }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -65,37 +65,37 @@
                             <span aria-hidden="true" style="color: #FFFFFF">&times;</span>
                         </button>
 
-                        <h4 class="modal-title">Create Mount</h4>
+                        <h4 class="modal-title">マウントの作成</h4>
                     </div>
 
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="pName" class="form-label">Name</label>
+                                <label for="pName" class="form-label">名前</label>
                                 <input type="text" id="pName" name="name" class="form-control" />
-                                <p class="text-muted small">Unique name used to separate this mount from another.</p>
+                                <p class="text-muted small">これを他と区別するためのユニークな名前。</p>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="pDescription" class="form-label">Description</label>
+                                <label for="pDescription" class="form-label">説明</label>
                                 <textarea id="pDescription" name="description" class="form-control" rows="4"></textarea>
-                                <p class="text-muted small">A longer description for this mount, must be less than 191 characters.</p>
+                                <p class="text-muted small">このマウントの詳細な説明、191文字以下である必要があります。</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="pSource" class="form-label">Source</label>
+                                <label for="pSource" class="form-label">ソース</label>
                                 <input type="text" id="pSource" name="source" class="form-control" />
-                                <p class="text-muted small">File path on the host system to mount to a container.</p>
+                                <p class="text-muted small">ホストシステム上のファイルパス、コンテナにマウントするためのもの。</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="pTarget" class="form-label">Target</label>
+                                <label for="pTarget" class="form-label">ターゲット</label>
                                 <input type="text" id="pTarget" name="target" class="form-control" />
-                                <p class="text-muted small">Where the mount will be accessible inside a container.</p>
+                                <p class="text-muted small">コンテナ内でアクセス可能なマウント先。</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label">Read Only</label>
+                                <label class="form-label">読み取り専用</label>
 
                                 <div>
                                     <div class="radio radio-success radio-inline">
@@ -109,11 +109,11 @@
                                     </div>
                                 </div>
 
-                                <p class="text-muted small">Is the mount read only inside the container?</p>
+                                <p class="text-muted small">コンテナ内でのマウントが読み取り専用であるかどうか。</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label">User Mountable</label>
+                                <label class="form-label">ユーザーがマウント可能</label>
 
                                 <div>
                                     <div class="radio radio-success radio-inline">
@@ -127,15 +127,15 @@
                                     </div>
                                 </div>
 
-                                <p class="text-muted small">Should users be able to mount this themselves?</p>
+                                <p class="text-muted small">ユーザーがこれを自分でマウントできるかどうか。</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         {!! csrf_field() !!}
-                        <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success btn-sm">Create</button>
+                        <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">キャンセル</button>
+                        <button type="submit" class="btn btn-success btn-sm">作成</button>
                     </div>
                 </form>
             </div>

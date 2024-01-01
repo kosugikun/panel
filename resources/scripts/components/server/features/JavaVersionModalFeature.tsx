@@ -78,9 +78,9 @@ const JavaVersionModalFeature = () => {
             <FlashMessageRender key={'feature:javaVersion'} css={tw`mb-4`} />
             <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Unsupported Java Version</h2>
             <p css={tw`mt-4`}>
-                This server is currently running an unsupported version of Java and cannot be started.
+                このサーバーは現在、サポートされていないバージョンのJavaで実行されており、起動できません。
                 <Can action={'startup.docker-image'}>
-                    &nbsp;Please select a supported version from the list below to continue starting the server.
+                    サーバーを起動し続けるには、以下のリストからサポートされているバージョンを選択してください。
                 </Can>
             </p>
             <Can action={'startup.docker-image'}>
@@ -106,7 +106,7 @@ const JavaVersionModalFeature = () => {
                 </Button>
                 <Can action={'startup.docker-image'}>
                     <Button onClick={updateJava} css={tw`w-full sm:w-auto`}>
-                        Update Docker Image
+                        Dockerイメージを更新
                     </Button>
                 </Can>
             </div>

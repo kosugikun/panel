@@ -14,30 +14,30 @@ export default () => {
 
     return status === 'installing' || status === 'install_failed' || status === 'reinstall_failed' ? (
         <ScreenBlock
-            title={'Running Installer'}
+            title={'インストーラーの実行'}
             image={ServerInstallSvg}
-            message={'Your server should be ready soon, please try again in a few minutes.'}
+            message={'サーバーはまもなく準備できますので、数分後にもう一度お試しください。'}
         />
     ) : status === 'suspended' ? (
         <ScreenBlock
-            title={'Server Suspended'}
+            title={'サーバー停止'}
             image={ServerErrorSvg}
-            message={'This server is suspended and cannot be accessed.'}
+            message={'このサーバーは一時停止中で、アクセスできません。'}
         />
     ) : isNodeUnderMaintenance ? (
         <ScreenBlock
-            title={'Node under Maintenance'}
+            title={'メンテナンス中のノード'}
             image={ServerErrorSvg}
-            message={'The node of this server is currently under maintenance.'}
+            message={'このサーバーのノードは現在メンテナンス中です。'}
         />
     ) : (
         <ScreenBlock
-            title={isTransferring ? 'Transferring' : 'Restoring from Backup'}
+            title={isTransferring ? '移籍' : 'バックアップからの復元'}
             image={ServerRestoreSvg}
             message={
                 isTransferring
-                    ? 'Your server is being transferred to a new node, please check back later.'
-                    : 'Your server is currently being restored from a backup, please check back in a few minutes.'
+                    ? 'サーバーは新しいノードに移動中です。'
+                    : 'サーバーは現在バックアップから復元中です。'
             }
         />
     );
